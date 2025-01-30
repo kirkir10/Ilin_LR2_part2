@@ -1,41 +1,40 @@
 #include <iostream>
 #include <cmath>
-#include <cstring>
+#include <sstream>
 using namespace std;
 
+// Функция для ввода числа X
+bool inputNumberX(const string& input, double& x) {
+    stringstream ss(input);
+    return (ss >> x) ? true : false;
+}
 
-// Функция для ввода чисел
-void inputNumberX(double &x) {
-    cout << "Введите число x: ";
-    cin >> x;
+// Функция для ввода числа Y
+bool inputNumberY(const string& input, double& y) {
+    stringstream ss(input);
+    if (ss >> y) {
+        cout << "Число Y успешно введено." << endl;
+        return true;
+    }
+    return false;
 }
-void inputNumberY(double &y) {
-    cout << "Введите число y: ";
-    cin >> y;
-    cout << "Число Y успешно введено." << endl;
+
+// Функция для ввода числа Z
+bool inputNumberZ(const string& input, double& z) {
+    stringstream ss(input);
+    if (ss >> z) {
+        cout << "Число Z успешно введено." << endl;
+        return true;
+    }
+    return false;
 }
-void inputNumberZ(double &z) {
-    cin >> z;
-    cout << "Число Z успешно введено." << endl;
-}
+
 // Функция для вычисления суммы дробных частей 
-void calculateFractionalSum(double x, double y, double z) {
-    double fractionalX = x - floor(x);
-    double fractionalY = y - floor(y);
-    double fractionalZ = z - floor(z);
-    double sum = fractionalX + fractionalY + fractionalZ;
-
-    cout << "Сумма дробных частей: " << sum << endl;
+double calculateFractionalSum(double x, double y, double z) {
+    return (x - floor(x)) + (y - floor(y)) + (z - floor(z));
 }
 
 // Функция для вычисления суммы целых частей 
-void calculateIntegerSum(double x, double y, double z) {
-    int integerX = static_cast<int>(x);
-    int integerY = static_cast<int>(y);
-    int integerZ = static_cast<int>(z);
-    int sum = integerX + integerY + integerZ;
-
-    cout << "Сумма целых частей: " << sum << endl;
+int calculateIntegerSum(double x, double y, double z) {
+    return static_cast<int>(x) + static_cast<int>(y) + static_cast<int>(z);
 }
-#endif
-
